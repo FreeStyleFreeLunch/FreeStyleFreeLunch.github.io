@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="FreeStyle: Free Lunch for Text-guided Style Transfer using Diffusion Models">
+  <meta name="keywords" content="FreeStyle, Diffusion Model, SDXL, Style Transfer">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FreeStyle: Free Lunch for Text-guided Style Transfer using Diffusion Models</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y5ZVQZ7NHC"></script> -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <!-- <link rel="icon" href="./static/images/favicon.svg"> -->
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js_slide/fontawesome.all.min.js"></script>
+  <script src="./static/js_slide/bulma-carousel.min.js"></script>
+  <script src="./static/js_slide/bulma-slider.min.js"></script>
+  <script src="./static/js_slide/index.js"></script>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+
+  <!-- Vendor Stylesheets -->
+  <!--=================js==========================-->
+  <link rel="stylesheet" href="./static/css/tab_gallery.css">
+  <link rel="stylesheet" href="./static/css/juxtapose.css">
+  <link rel="stylesheet" href="./static/css/image_card_fader.css">
+  <link rel="stylesheet" href="./static/css/image_card_slider.css">
+</head>
+<body>
+
+
+
+
+<section class="hero">
+  <div class="hero-body" style="background: #D1D1CF;width: 100%">
+    <div class="container is-max-desktop" >
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title"><span style="color:#5e5ed2; font-weight: bold; font-style: italic"><strong>FreeStyle</strong></span> : Free Lunch for Text-guided Style Transfer using Diffusion Models</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href=""><font color="black">Feihong He<sup>*</sup></font></a><sup></sup>,</span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?hl=zh-CN&user=StWrqHIAAAAJ">Gang Li<sup>*</sup></a><sup></sup>,</span>
+            <span class="author-block">
+              <a href=""><font color="black">Mengyuan Zhang</font></a><sup></sup>,
+            </span>
+            <span class="author-block">
+              <a href=""><font color="black">Leilei Yan</font></a><sup></sup>
+            </span>
+            </span>,
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?hl=zh-CN&user=2evM4HEAAAAJ">Lingyu Si</a><sup></sup>
+            </span>
+            </span>,
+            <span class="author-block">
+              <a href=""><font color="black">Fanzhang Li</font></a><sup></sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">School of Computer Science, Suzhou University
+          </div>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Institute of Software Research, Chinese Academy of Sciences
+          </div>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Harbin Institute of Technology
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/2309.11497.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2309.11497"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/ChenyangSi/FreeU"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>  
+
+              <!-- Code Link. -->
+              <!-- <span class="link-block">
+                <a href="https://github.com/google/nerfies"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span> -->
+              <!-- Dataset Link. -->
+              <!-- <span class="link-block">
+                <a href="https://github.com/google/nerfies/releases/tag/0.1"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a> -->
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--=================Teasers==========================-->
+<section class="hero is-small">
+  <div class="hero-body" style="background: #e8e8e8;width: 100%">
+    <div class="mainshowcase">
+      <!-- The expanding image container -->
+      <!-- <h2 class="title is-3">Text to Image</h2> -->
+      <div class="tab_container">
+        <!-- Close the image -->
+        <!-- <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span> -->
+
+        <!-- Expanded image -->
+        <div id="juxtapose-embed" data-startingposition="30%" data-animate="true" class="juxtapose"
+          style="height: 650px; width: 650px;">
+          
+        </div>
+
+        <div>
+          <div id="juxtapose-hidden"></div>
+        </div>
+
+        <!-- Image text -->
+        <div id="imgtext"></div>
+      </div>
+
+      <!-- The grid: four columns -->
+      <div class="tab_row">
+        <div class="tab_column">
+          <img src="FreeStyle_imgs/house.png" onclick="tab_gallery_click('house');">
+        </div>
+        <div class="tab_column">
+          <img src="FreeStyle_imgs/dog.png" onclick="tab_gallery_click('dog');">
+        </div>
+        <div class="tab_column">
+          <img src="FreeStyle_imgs/shang.png" onclick="tab_gallery_click('shang');">
+        </div>
+        <div class="tab_column">
+          <img src="FreeStyle_imgs/shitou.png" onclick="tab_gallery_click('shitou');">
+        </div>
+        <div class="tab_column">
+          <img src="FreeStyle_imgs/fengjing.png" onclick="tab_gallery_click('fengjing');">
+        </div>
+        <div class="tab_column">
+          <img src="FreeStyle_imgs/chinese.png" onclick="tab_gallery_click('chinese');">
+        </div>
+        <div class="tab_column">
+          <img src="FreeStyle_imgs/lion.png" onclick="tab_gallery_click('lion');">
+        </div>
+        <div class="tab_column">
+          <img src="FreeStyle_imgs/cjl.png" onclick="tab_gallery_click('cjl');">
+        </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- <section class="section">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="content has-text-justified">
+          <div style="text-align: center; vertical-align:middle">
+            <video id="teaser" autoplay muted loop playsinline height="100%">
+              <source src="./demo_video_v5.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+          <div align="center">
+            <b>Samples generated by ModelScope with or without FreeU.</b>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+
+<!--=================Abstract==========================-->
+<section class="section" style="background: #D1D1CF;width: 100%">
+  <div class="container is-max-desktop" style="background: #D1D1CF;width: 100%">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3" style="font-size: 300%">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+        The rapid development of generative diffusion models has significantly advanced the field of style transfer. However, most current style transfer methods based on diffusion models typically involve a slow iterative optimization process, e.g., model fine-tuning and textual inversion of style concept. In this paper, we introduce <b>FreeStyle</b>, an innovative style transfer method built upon a pre-trained large diffusion model, requiring no further optimization. Besides, our method enables style transfer only through a text description of the desired style, eliminating the necessity of style images. Specifically, we propose a dual-stream encoder and single-stream decoder architecture, replacing the conventional U-Net in diffusion models. In the dual-stream encoder, two distinct branches take the content image and style text prompt as inputs, achieving content and style decoupling. In the decoder, we further modulate features from the dual streams based on a given content image and the corresponding style text prompt for precise style transfer.
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Paper video. -->
+    <!-- <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div> -->
+    <!--/ Paper video. -->
+  </div>
+</section>
+
+<!--/ Framework. -->
+<section class="section" style="margin-top:-120px;background: #D1D1CF;width: 100%">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+        <div class="section-title has-text-centered" >
+          <h2 class="title is-3 is-centered" style="font-size: 200%">FreeStyle Framework</h2>
+        </div>
+        <div class="columns is-centered has-text-centered">
+          <div class="column">
+            <div class="publication-img">
+              <img id="architecture" src="./FreeStyle_imgs/framework.png" style="width:1600px; margin-top:10px;margin-bottom:10px;"/>
+            </div>
+          </div>
+        </div>
+        <p>
+          We introduce FreeStyle, an innovative style transfer method built upon a pre-trained large diffusion model, requiring no further optimization.
+        </p>
+    </div>
+  </div>
+</section>
+
+
+
+<!--=================SD Results==========================-->
+<!-- <section class="section" style="background-color: #f1f1f1;">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Text to Image</h2>
+        <div class="content has-text-justified">
+          <div style="text-align: center; vertical-align:middle">
+            <img src="t2i/sd.png" width="2000">
+          </div>
+          <div align="center">
+            <b>Samples generated by Stabel Diffusion with or without FreeU.</b>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+
+
+
+
+  
+<section class="hero is-small">
+  <div class="hero-body" id="showbox" style="background-color: #E8E8E8;">
+
+    <div class="showcase" style="background-color: #D1D1CF;">
+
+    <div class="showcell">
+      <!-- The expanding image container -->
+      <!-- <h2 class="title is-3">Text to Image</h2> -->
+      <div class="tab_container" >
+        <h2 class="title is-3" style="text-align: center">Pixel Style</h2>
+        <!-- Close the image -->
+        <!-- <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span> -->
+
+        <!-- Expanded image -->
+        <div id="pixel" data-startingposition="30%" data-animate="true" class="juxtapose"
+          style="height: 512px; width: 512px;">
+
+        </div>
+
+        <div>
+          <div id="pixel_hidden"></div>
+        </div>
+
+        <!-- Image text -->
+        <div id="imgtext"></div>
+      </div>
+
+      <!-- The grid: four columns -->
+      <div class="tab_row">
+        <div class="tab_column">
+          <img src="FreeStyle_imgs/pixel0.png" onclick="tab_gallery_click_pixel('pixel0');">
+        </div>
+        <div class="tab_column">
+          <img src="FreeStyle_imgs/pixel1.png" onclick="tab_gallery_click_pixel('pixel1');">
+        </div>
+        <div class="tab_column">
+          <img src="FreeStyle_imgs/pixel2.png" onclick="tab_gallery_click_pixel('pixel2');">
+        </div>
+        <div class="tab_column">
+          <img src="FreeStyle_imgs/pixel3.png" onclick="tab_gallery_click_pixel('pixel3');">
+        </div>
+        <div class="tab_column">
+          <img src="FreeStyle_imgs/pixel4.png" onclick="tab_gallery_click_pixel('pixel4');">
+        </div>
+        <div class="tab_column">
+          <img src="FreeStyle_imgs/pixel5.png" onclick="tab_gallery_click_pixel('pixel5');">
+        </div>
+        <div class="tab_column">
+          <img src="FreeStyle_imgs/pixel6.png" onclick="tab_gallery_click_pixel('pixel6');">
+        </div>
+        <div class="tab_column">
+          <img src="FreeStyle_imgs/pixel7.png" onclick="tab_gallery_click_pixel('pixel7');">
+        </div>
+      </div>
+    </div>
+
+
+    <div class="showcell">
+      <!-- The expanding image container -->
+      <!-- <h2 class="title is-3">Text to Image</h2> -->
+      <div class="tab_container" >
+        <h2 class="title is-3" style="text-align: center">Origami Art Style</h2>
+        <!-- Close the image -->
+        <!-- <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span> -->
+
+        <!-- Expanded image -->
+        <div id="Origami" data-startingposition="30%" data-animate="true" class="juxtapose"
+          style="height: 512px; width: 512px;">
+
+        </div>
+
+        <div>
+          <div id="Origami_hidden"></div>
+        </div>
+
+        <!-- Image text -->
+        <div id="imgtext"></div>
+      </div>
+
+      <!-- The grid: four columns -->
+      <div class="tab_row">
+        <div class="tab_column">
+          <img src="FreeStyle_imgs/Origami3.png" onclick="tab_gallery_click_Origami('Origami3');">
+        </div>
+        <div class="tab_column">
+          <img src="FreeStyle_imgs/Origami1.png" onclick="tab_gallery_click_Origami('Origami1');">
+        </div>
+        <div class="tab_column">
+          <img src="FreeStyle_imgs/Origami2.png" onclick="tab_gallery_click_Origami('Origami2');">
+        </div>
+        <div class="tab_column">
+          <img src="FreeStyle_imgs/Origami0.png" onclick="tab_gallery_click_Origami('Origami0');">
+        </div>
+        <div class="tab_column">
+          <img src="FreeStyle_imgs/Origami4.png" onclick="tab_gallery_click_Origami('Origami4');">
+        </div>
+        <div class="tab_column">
+          <img src="FreeStyle_imgs/Origami5.png" onclick="tab_gallery_click_Origami('Origami5');">
+        </div>
+        <div class="tab_column">
+          <img src="FreeStyle_imgs/Origami6.png" onclick="tab_gallery_click_Origami('Origami6');">
+        </div>
+        <div class="tab_column">
+          <img src="FreeStyle_imgs/Origami7.png" onclick="tab_gallery_click_Origami('Origami7');">
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <div class="showcase">
+    <div class="showcell">
+      <!-- The expanding image container -->
+      <!-- <h2 class="title is-3">Text to Image</h2> -->
+      <div class="tab_container" >
+        <h2 class="title is-3" style="text-align: center">Embroidery Art Style</h2>
+        <!-- Close the image -->
+        <!-- <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span> -->
+
+        <!-- Expanded image -->
+        <div id="Embroidery" data-startingposition="30%" data-animate="true" class="juxtapose"
+          style="height: 512px; width: 512px;">
+
+        </div>
+
+        <div>
+          <div id="Embroidery_hidden"></div>
+        </div>
+
+        <!-- Image text -->
+        <div id="imgtext"></div>
+      </div>
+
+      <!-- The grid: four columns -->
+      <div class="tab_row">
+        <div class="tab_column">
+          <img src="FreeStyle_imgs/Embroidery0.png" onclick="tab_gallery_click_Embroidery('Embroidery0');">
+        </div>
+        <div class="tab_column">
+          <img src="FreeStyle_imgs/Embroidery1.png" onclick="tab_gallery_click_Embroidery('Embroidery1');">
+        </div>
+        <div class="tab_column">
+          <img src="FreeStyle_imgs/Embroidery2.png" onclick="tab_gallery_click_Embroidery('Embroidery2');">
+        </div>
+        <div class="tab_column">
+          <img src="FreeStyle_imgs/Embroidery3.png" onclick="tab_gallery_click_Embroidery('Embroidery3');">
+        </div>
+        <div class="tab_column">
+          <img src="FreeStyle_imgs/Embroidery4.png" onclick="tab_gallery_click_Embroidery('Embroidery4');">
+        </div>
+        <div class="tab_column">
+          <img src="FreeStyle_imgs/Embroidery5.png" onclick="tab_gallery_click_Embroidery('Embroidery5');">
+        </div>
+        <div class="tab_column">
+          <img src="FreeStyle_imgs/Embroidery6.png" onclick="tab_gallery_click_Embroidery('Embroidery6');">
+        </div>
+        <div class="tab_column">
+          <img src="FreeStyle_imgs/Embroidery7.png" onclick="tab_gallery_click_Embroidery('Embroidery7');">
+        </div>
+      </div>
+    </div>
+
+    <div class="showcell">
+      <!-- The expanding image container -->
+      <!-- <h2 class="title is-3">Text to Image</h2> -->
+      <div class="tab_container" >
+        <h2 class="title is-3" style="text-align: center">Studio Ghibli Style</h2>
+        <!-- Close the image -->
+        <!-- <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span> -->
+
+        <!-- Expanded image -->
+        <div id="Ghibli" data-startingposition="30%" data-animate="true" class="juxtapose"
+          style="height: 512px; width: 512px;">
+
+        </div>
+
+        <div>
+          <div id="Ghibli_hidden"></div>
+        </div>
+
+        <!-- Image text -->
+        <div id="imgtext"></div>
+      </div>
+
+      <!-- The grid: four columns -->
+      <div class="tab_row">
+        <div class="tab_column">
+          <img src="FreeStyle_imgs/Ghibli0.png" onclick="tab_gallery_click_Ghibli('Ghibli0');">
+        </div>
+        <div class="tab_column">
+          <img src="FreeStyle_imgs/Ghibli1.png" onclick="tab_gallery_click_Ghibli('Ghibli1');">
+        </div>
+        <div class="tab_column">
+          <img src="FreeStyle_imgs/Ghibli2.png" onclick="tab_gallery_click_Ghibli('Ghibli2');">
+        </div>
+        <div class="tab_column">
+          <img src="FreeStyle_imgs/Ghibli3.png" onclick="tab_gallery_click_Ghibli('Ghibli3');">
+        </div>
+        <div class="tab_column">
+          <img src="FreeStyle_imgs/Ghibli4.png" onclick="tab_gallery_click_Ghibli('Ghibli4');">
+        </div>
+        <div class="tab_column">
+          <img src="FreeStyle_imgs/Ghibli5.png" onclick="tab_gallery_click_Ghibli('Ghibli5');">
+        </div>
+        <div class="tab_column">
+          <img src="FreeStyle_imgs/Ghibli6.png" onclick="tab_gallery_click_Ghibli('Ghibli6');">
+        </div>
+        <div class="tab_column">
+          <img src="FreeStyle_imgs/Ghibli7.png" onclick="tab_gallery_click_Ghibli('Ghibli7');">
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <div class="showcase" style="background-color: #D1D1CF;">
+    <div class="showcell">
+      <!-- The expanding image container -->
+      <!-- <h2 class="title is-3">Text to Image</h2> -->
+      <div class="tab_container" >
+        <h2 class="title is-3" style="text-align: center">Chinese Ink</h2>
+        <!-- Close the image -->
+        <!-- <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span> -->
+
+        <!-- Expanded image -->
+        <div id="chineseink" data-startingposition="30%" data-animate="true" class="juxtapose"
+          style="height: 512px; width: 512px;">
+
+        </div>
+
+        <div>
+          <div id="chineseink_hidden"></div>
+        </div>
+
+        <!-- Image text -->
+        <div id="imgtext"></div>
+      </div>
+
+      <!-- The grid: four columns -->
+      <div class="tab_row">
+        <div class="tab_column">
+          <img src="FreeStyle_imgs/ink1.png" onclick="tab_gallery_click_chineseink('ink1');">
+        </div>
+        <div class="tab_column">
+          <img src="FreeStyle_imgs/ink0.png" onclick="tab_gallery_click_chineseink('ink0');">
+        </div>
+        <div class="tab_column">
+          <img src="FreeStyle_imgs/ink2.png" onclick="tab_gallery_click_chineseink('ink2');">
+        </div>
+        <div class="tab_column">
+          <img src="FreeStyle_imgs/ink3.png" onclick="tab_gallery_click_chineseink('ink3');">
+        </div>
+        <div class="tab_column">
+          <img src="FreeStyle_imgs/ink4.png" onclick="tab_gallery_click_chineseink('ink4');">
+        </div>
+        <div class="tab_column">
+          <img src="FreeStyle_imgs/ink5.png" onclick="tab_gallery_click_chineseink('ink5');">
+        </div>
+        <div class="tab_column">
+          <img src="FreeStyle_imgs/ink6.png" onclick="tab_gallery_click_chineseink('ink6');">
+        </div>
+        <div class="tab_column">
+          <img src="FreeStyle_imgs/ink7.png" onclick="tab_gallery_click_chineseink('ink7');">
+        </div>
+      </div>
+    </div>
+
+    <div class="showcell">
+      <!-- The expanding image container -->
+      <!-- <h2 class="title is-3">Text to Image</h2> -->
+      <div class="tab_container" >
+        <h2 class="title is-3" style="text-align: center">Oil Painting</h2>
+        <!-- Close the image -->
+        <!-- <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span> -->
+
+        <!-- Expanded image -->
+        <div id="oilpainting" data-startingposition="30%" data-animate="true" class="juxtapose"
+          style="height: 512px; width: 512px;">
+
+        </div>
+
+        <div>
+          <div id="oilpainting_hidden"></div>
+        </div>
+
+        <!-- Image text -->
+        <div id="imgtext"></div>
+      </div>
+
+      <!-- The grid: four columns -->
+      <div class="tab_row">
+        <div class="tab_column">
+          <img src="FreeStyle_imgs/oil0.png" onclick="tab_gallery_click_oilpainting('oil0');">
+        </div>
+        <div class="tab_column">
+          <img src="FreeStyle_imgs/oil1.png" onclick="tab_gallery_click_oilpainting('oil1');">
+        </div>
+        <div class="tab_column">
+          <img src="FreeStyle_imgs/oil2.png" onclick="tab_gallery_click_oilpainting('oil2');">
+        </div>
+        <div class="tab_column">
+          <img src="FreeStyle_imgs/oil3.png" onclick="tab_gallery_click_oilpainting('oil3');">
+        </div>
+        <div class="tab_column">
+          <img src="FreeStyle_imgs/oil4.png" onclick="tab_gallery_click_oilpainting('oil4');">
+        </div>
+        <div class="tab_column">
+          <img src="FreeStyle_imgs/oil5.png" onclick="tab_gallery_click_oilpainting('oil5');">
+        </div>
+        <div class="tab_column">
+          <img src="FreeStyle_imgs/oil6.png" onclick="tab_gallery_click_oilpainting('oil6');">
+        </div>
+        <div class="tab_column">
+          <img src="FreeStyle_imgs/oil7.png" onclick="tab_gallery_click_oilpainting('oil7');">
+        </div>
+      </div>
+    </div>
+    </div>
+
+
+    <div class="showcase">
+    <div class="showcell">
+      <!-- The expanding image container -->
+      <!-- <h2 class="title is-3">Text to Image</h2> -->
+      <div class="tab_container" >
+        <h2 class="title is-3" style="text-align: center">JOJO Style</h2>
+        <!-- Close the image -->
+        <!-- <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span> -->
+
+        <!-- Expanded image -->
+        <div id="JOJO" data-startingposition="30%" data-animate="true" class="juxtapose"
+          style="height: 512px; width: 512px;">
+
+        </div>
+
+        <div>
+          <div id="JOJO_hidden"></div>
+        </div>
+
+        <!-- Image text -->
+        <div id="imgtext"></div>
+      </div>
+
+      <!-- The grid: four columns -->
+      <div class="tab_row">
+        <div class="tab_column">
+          <img src="FreeStyle_imgs/JOJO0.png" onclick="tab_gallery_click_JOJO('JOJO0');">
+        </div>
+        <div class="tab_column">
+          <img src="FreeStyle_imgs/JOJO1.png" onclick="tab_gallery_click_JOJO('JOJO1');">
+        </div>
+        <div class="tab_column">
+          <img src="FreeStyle_imgs/JOJO2.png" onclick="tab_gallery_click_JOJO('JOJO2');">
+        </div>
+        <div class="tab_column">
+          <img src="FreeStyle_imgs/JOJO3.png" onclick="tab_gallery_click_JOJO('JOJO3');">
+        </div>
+        <div class="tab_column">
+          <img src="FreeStyle_imgs/JOJO4.png" onclick="tab_gallery_click_JOJO('JOJO4');">
+        </div>
+        <div class="tab_column">
+          <img src="FreeStyle_imgs/JOJO5.png" onclick="tab_gallery_click_JOJO('JOJO5');">
+        </div>
+        <div class="tab_column">
+          <img src="FreeStyle_imgs/JOJO6.png" onclick="tab_gallery_click_JOJO('JOJO6');">
+        </div>
+        <div class="tab_column">
+          <img src="FreeStyle_imgs/JOJO7.png" onclick="tab_gallery_click_JOJO('JOJO7');">
+        </div>
+      </div>
+    </div>
+
+    <div class="showcell">
+      <!-- The expanding image container -->
+      <!-- <h2 class="title is-3">Text to Image</h2> -->
+      <div class="tab_container" >
+        <h2 class="title is-3" style="text-align: center">Children Crayon Painting Style</h2>
+        <!-- Close the image -->
+        <!-- <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span> -->
+
+        <!-- Expanded image -->
+        <div id="Crayon" data-startingposition="30%" data-animate="true" class="juxtapose"
+          style="height: 512px; width: 512px;">
+
+        </div>
+
+        <div>
+          <div id="Crayon_hidden"></div>
+        </div>
+
+        <!-- Image text -->
+        <div id="imgtext"></div>
+      </div>
+
+      <!-- The grid: four columns -->
+      <div class="tab_row">
+        <div class="tab_column">
+          <img src="FreeStyle_imgs/Crayon0.png" onclick="tab_gallery_click_Crayon('Crayon0');">
+        </div>
+        <div class="tab_column">
+          <img src="FreeStyle_imgs/Crayon1.png" onclick="tab_gallery_click_Crayon('Crayon1');">
+        </div>
+        <div class="tab_column">
+          <img src="FreeStyle_imgs/Crayon2.png" onclick="tab_gallery_click_Crayon('Crayon2');">
+        </div>
+        <div class="tab_column">
+          <img src="FreeStyle_imgs/Crayon3.png" onclick="tab_gallery_click_Crayon('Crayon3');">
+        </div>
+        <div class="tab_column">
+          <img src="FreeStyle_imgs/Crayon4.png" onclick="tab_gallery_click_Crayon('Crayon4');">
+        </div>
+        <div class="tab_column">
+          <img src="FreeStyle_imgs/Crayon5.png" onclick="tab_gallery_click_Crayon('Crayon5');">
+        </div>
+        <div class="tab_column">
+          <img src="FreeStyle_imgs/Crayon6.png" onclick="tab_gallery_click_Crayon('Crayon6');">
+        </div>
+        <div class="tab_column">
+          <img src="FreeStyle_imgs/Crayon7.png" onclick="tab_gallery_click_Crayon('Crayon7');">
+        </div>
+      </div>
+    </div>
+    </div>
+
+
+
+
+  </div>
+</section>
+
+
+
+    
+
+<section class="section" id="BibTeX" style="background: #adacac;width: 100%">
+  <div class="container is-max-desktop content" style="background: #adacac;width: 100%">
+    <h2 class="title">BibTeX</h2>
+    <pre style="background: #adacac;width: 100%"><code style="font-size: 150%">
+      BibTeX update later……
+    </code></pre>
+  </div>
+</section>
+
+
+
+<!-- Image Slider Javascripts -->
+<!--=================Functions==========================-->
+<script src="static/js/juxtapose.js"></script>
+
+<script>
+  var slider;
+  let origImages = [
+    { "src": "FreeStyle_imgs/house.png", "label": "Content", },
+    { "src": "FreeStyle_imgs/house_freestyle.png", "label": "FreeStyle", }
+  ];
+  let origOptions = {
+    "makeResponsive": true,
+    "showLabels": true,
+    "mode": "horizontal",
+    "showCredits": true,
+    "animate": true,
+    "startingPosition": "50"
+  };
+
+  const juxtaposeSelector = "#juxtapose-embed";
+  const transientSelector = "#juxtapose-hidden";
+
+  
+  function tab_gallery_click(name) {
+    // Get the expanded image
+    let inputImage = {
+      label: "Content",
+    };
+    let outputImage = {
+      label: "FreeStyle",
+    };
+
+    inputImage.src = "FreeStyle_imgs/".concat(name, ".png")
+    outputImage.src = "FreeStyle_imgs/".concat(name, "_freestyle", ".png")
+
+    let images = [inputImage, outputImage];
+    let options = slider.options;
+    options.callback = function (obj) {
+      var newNode = document.getElementById(obj.selector.substring(1));
+      var oldNode = document.getElementById(juxtaposeSelector.substring(1));
+      console.log(obj.selector.substring(1));
+      console.log(newNode.children[0]);
+      oldNode.replaceChild(newNode.children[0], oldNode.children[0]);
+      //newNode.removeChild(newNode.children[0]);
+
+    };
+    slider = new juxtapose.JXSlider(transientSelector, images, options);
+  };
+
+  var slider_chineseink;
+  let origImages_chineseink = [
+    { "src": "FreeStyle_imgs/ink1.png", "label": "Content", },
+    { "src": "FreeStyle_imgs/ink1_freestyle.png", "label": "FreeStyle", }
+  ];
+  let origOptions_chineseink = {
+    "makeResponsive": true,
+    "showLabels": true,
+    "mode": "horizontal",
+    "showCredits": true,
+    "animate": true,
+    "startingPosition": "50"
+  };
+
+  const chineseink = "#chineseink";
+  const chineseink_hidden = "#chineseink_hidden";
+
+
+  function tab_gallery_click_chineseink(name) {
+    // Get the expanded image
+    let inputImage = {
+      label: "Content",
+    };
+    let outputImage = {
+      label: "FreeStyle",
+    };
+
+    inputImage.src = "FreeStyle_imgs/".concat(name, ".png")
+    outputImage.src = "FreeStyle_imgs/".concat(name, "_freestyle", ".png")
+
+    let images = [inputImage, outputImage];
+    let options = slider.options;
+    options.callback = function (obj) {
+      var newNode = document.getElementById(obj.selector.substring(1));
+      var oldNode = document.getElementById(chineseink.substring(1));
+      console.log(obj.selector.substring(1));
+      console.log(newNode.children[0]);
+      oldNode.replaceChild(newNode.children[0], oldNode.children[0]);
+      //newNode.removeChild(newNode.children[0]);
+
+    };
+    slider = new juxtapose.JXSlider(transientSelector, images, options);
+  };
+
+
+  var slider_oilpainting;
+  let origImages_oilpainting = [
+    { "src": "FreeStyle_imgs/oil0.png", "label": "Content", },
+    { "src": "FreeStyle_imgs/oil0_freestyle.png", "label": "FreeStyle", }
+  ];
+  let origOptions_oilpainting = {
+    "makeResponsive": true,
+    "showLabels": true,
+    "mode": "horizontal",
+    "showCredits": true,
+    "animate": true,
+    "startingPosition": "50"
+  };
+
+  const oilpainting = "#oilpainting";
+  const oilpainting_hidden = "#oilpainting_hidden";
+
+
+  function tab_gallery_click_oilpainting(name) {
+    // Get the expanded image
+    let inputImage = {
+      label: "Content",
+    };
+    let outputImage = {
+      label: "FreeStyle",
+    };
+
+    inputImage.src = "FreeStyle_imgs/".concat(name, ".png")
+    outputImage.src = "FreeStyle_imgs/".concat(name, "_freestyle", ".png")
+
+    let images = [inputImage, outputImage];
+    let options = slider.options;
+    options.callback = function (obj) {
+      var newNode = document.getElementById(obj.selector.substring(1));
+      var oldNode = document.getElementById(oilpainting.substring(1));
+      console.log(obj.selector.substring(1));
+      console.log(newNode.children[0]);
+      oldNode.replaceChild(newNode.children[0], oldNode.children[0]);
+      //newNode.removeChild(newNode.children[0]);
+
+    };
+    slider = new juxtapose.JXSlider(transientSelector, images, options);
+  };
+
+  var slider_pixel;
+  let origImages_pixel = [
+    { "src": "FreeStyle_imgs/pixel0.png", "label": "Content", },
+    { "src": "FreeStyle_imgs/pixel0_freestyle.png", "label": "FreeStyle", }
+  ];
+  let origOptions_pixel = {
+    "makeResponsive": true,
+    "showLabels": true,
+    "mode": "horizontal",
+    "showCredits": true,
+    "animate": true,
+    "startingPosition": "50"
+  };
+
+  const pixel = "#pixel";
+  const pixel_hidden = "#pixel_hidden";
+
+
+  function tab_gallery_click_pixel(name) {
+    // Get the expanded image
+    let inputImage = {
+      label: "Content",
+    };
+    let outputImage = {
+      label: "FreeStyle",
+    };
+
+    inputImage.src = "FreeStyle_imgs/".concat(name, ".png")
+    outputImage.src = "FreeStyle_imgs/".concat(name, "_freestyle", ".png")
+
+    let images = [inputImage, outputImage];
+    let options = slider.options;
+    options.callback = function (obj) {
+      var newNode = document.getElementById(obj.selector.substring(1));
+      var oldNode = document.getElementById(pixel.substring(1));
+      console.log(obj.selector.substring(1));
+      console.log(newNode.children[0]);
+      oldNode.replaceChild(newNode.children[0], oldNode.children[0]);
+      //newNode.removeChild(newNode.children[0]);
+
+    };
+    slider = new juxtapose.JXSlider(transientSelector, images, options);
+  };
+
+  var slider_Origami;
+  let origImages_Origami = [
+    { "src": "FreeStyle_imgs/Origami3.png", "label": "Content", },
+    { "src": "FreeStyle_imgs/Origami3_freestyle.png", "label": "FreeStyle", }
+  ];
+  let origOptions_Origami = {
+    "makeResponsive": true,
+    "showLabels": true,
+    "mode": "horizontal",
+    "showCredits": true,
+    "animate": true,
+    "startingPosition": "50"
+  };
+
+  const Origami = "#Origami";
+  const Origami_hidden = "#Origami_hidden";
+
+
+  function tab_gallery_click_Origami(name) {
+    // Get the expanded image
+    let inputImage = {
+      label: "Content",
+    };
+    let outputImage = {
+      label: "FreeStyle",
+    };
+
+    inputImage.src = "FreeStyle_imgs/".concat(name, ".png")
+    outputImage.src = "FreeStyle_imgs/".concat(name, "_freestyle", ".png")
+
+    let images = [inputImage, outputImage];
+    let options = slider.options;
+    options.callback = function (obj) {
+      var newNode = document.getElementById(obj.selector.substring(1));
+      var oldNode = document.getElementById(Origami.substring(1));
+      console.log(obj.selector.substring(1));
+      console.log(newNode.children[0]);
+      oldNode.replaceChild(newNode.children[0], oldNode.children[0]);
+      //newNode.removeChild(newNode.children[0]);
+
+    };
+    slider = new juxtapose.JXSlider(transientSelector, images, options);
+  };
+
+  var slider_Embroidery;
+  let origImages_Embroidery = [
+    { "src": "FreeStyle_imgs/Embroidery0.png", "label": "Content", },
+    { "src": "FreeStyle_imgs/Embroidery0_freestyle.png", "label": "FreeStyle", }
+  ];
+  let origOptions_Embroidery = {
+    "makeResponsive": true,
+    "showLabels": true,
+    "mode": "horizontal",
+    "showCredits": true,
+    "animate": true,
+    "startingPosition": "50"
+  };
+
+  const Embroidery = "#Embroidery";
+  const Embroidery_hidden = "#Embroidery_hidden";
+
+
+  function tab_gallery_click_Embroidery(name) {
+    // Get the expanded image
+    let inputImage = {
+      label: "Content",
+    };
+    let outputImage = {
+      label: "FreeStyle",
+    };
+
+    inputImage.src = "FreeStyle_imgs/".concat(name, ".png")
+    outputImage.src = "FreeStyle_imgs/".concat(name, "_freestyle", ".png")
+
+    let images = [inputImage, outputImage];
+    let options = slider.options;
+    options.callback = function (obj) {
+      var newNode = document.getElementById(obj.selector.substring(1));
+      var oldNode = document.getElementById(Embroidery.substring(1));
+      console.log(obj.selector.substring(1));
+      console.log(newNode.children[0]);
+      oldNode.replaceChild(newNode.children[0], oldNode.children[0]);
+      //newNode.removeChild(newNode.children[0]);
+
+    };
+    slider = new juxtapose.JXSlider(transientSelector, images, options);
+  };
+
+
+  var slider_Ghibli;
+  let origImages_Ghibli = [
+    { "src": "FreeStyle_imgs/Ghibli0.png", "label": "Content", },
+    { "src": "FreeStyle_imgs/Ghibli0_freestyle.png", "label": "FreeStyle", }
+  ];
+  let origOptions_Ghibli = {
+    "makeResponsive": true,
+    "showLabels": true,
+    "mode": "horizontal",
+    "showCredits": true,
+    "animate": true,
+    "startingPosition": "50"
+  };
+
+  const Ghibli = "#Ghibli";
+  const Ghibli_hidden = "#Ghibli_hidden";
+
+
+  function tab_gallery_click_Ghibli(name) {
+    // Get the expanded image
+    let inputImage = {
+      label: "Content",
+    };
+    let outputImage = {
+      label: "FreeStyle",
+    };
+
+    inputImage.src = "FreeStyle_imgs/".concat(name, ".png")
+    outputImage.src = "FreeStyle_imgs/".concat(name, "_freestyle", ".png")
+
+    let images = [inputImage, outputImage];
+    let options = slider.options;
+    options.callback = function (obj) {
+      var newNode = document.getElementById(obj.selector.substring(1));
+      var oldNode = document.getElementById(Ghibli.substring(1));
+      console.log(obj.selector.substring(1));
+      console.log(newNode.children[0]);
+      oldNode.replaceChild(newNode.children[0], oldNode.children[0]);
+      //newNode.removeChild(newNode.children[0]);
+
+    };
+    slider = new juxtapose.JXSlider(transientSelector, images, options);
+  };
+
+
+  var slider_JOJO;
+  let origImages_JOJO = [
+    { "src": "FreeStyle_imgs/JOJO0.png", "label": "Content", },
+    { "src": "FreeStyle_imgs/JOJO0_freestyle.png", "label": "FreeStyle", }
+  ];
+  let origOptions_JOJO = {
+    "makeResponsive": true,
+    "showLabels": true,
+    "mode": "horizontal",
+    "showCredits": true,
+    "animate": true,
+    "startingPosition": "50"
+  };
+
+  const JOJO = "#JOJO";
+  const JOJO_hidden = "#JOJO_hidden";
+
+
+  function tab_gallery_click_JOJO(name) {
+    // Get the expanded image
+    let inputImage = {
+      label: "Content",
+    };
+    let outputImage = {
+      label: "FreeStyle",
+    };
+
+    inputImage.src = "FreeStyle_imgs/".concat(name, ".png")
+    outputImage.src = "FreeStyle_imgs/".concat(name, "_freestyle", ".png")
+
+    let images = [inputImage, outputImage];
+    let options = slider.options;
+    options.callback = function (obj) {
+      var newNode = document.getElementById(obj.selector.substring(1));
+      var oldNode = document.getElementById(JOJO.substring(1));
+      console.log(obj.selector.substring(1));
+      console.log(newNode.children[0]);
+      oldNode.replaceChild(newNode.children[0], oldNode.children[0]);
+      //newNode.removeChild(newNode.children[0]);
+
+    };
+    slider = new juxtapose.JXSlider(transientSelector, images, options);
+  };
+
+  var slider_Crayon;
+  let origImages_Crayon = [
+    { "src": "FreeStyle_imgs/Crayon0.png", "label": "Content", },
+    { "src": "FreeStyle_imgs/Crayon0_freestyle.png", "label": "FreeStyle", }
+  ];
+  let origOptions_Crayon = {
+    "makeResponsive": true,
+    "showLabels": true,
+    "mode": "horizontal",
+    "showCredits": true,
+    "animate": true,
+    "startingPosition": "50"
+  };
+
+  const Crayon = "#Crayon";
+  const Crayon_hidden = "#Crayon_hidden";
+
+
+  function tab_gallery_click_Crayon(name) {
+    // Get the expanded image
+    let inputImage = {
+      label: "Content",
+    };
+    let outputImage = {
+      label: "FreeStyle",
+    };
+
+    inputImage.src = "FreeStyle_imgs/".concat(name, ".png")
+    outputImage.src = "FreeStyle_imgs/".concat(name, "_freestyle", ".png")
+
+    let images = [inputImage, outputImage];
+    let options = slider.options;
+    options.callback = function (obj) {
+      var newNode = document.getElementById(obj.selector.substring(1));
+      var oldNode = document.getElementById(Crayon.substring(1));
+      console.log(obj.selector.substring(1));
+      console.log(newNode.children[0]);
+      oldNode.replaceChild(newNode.children[0], oldNode.children[0]);
+      //newNode.removeChild(newNode.children[0]);
+
+    };
+    slider = new juxtapose.JXSlider(transientSelector, images, options);
+  };
+
+
+
+  (function () {
+    slider = new juxtapose.JXSlider(
+      juxtaposeSelector, origImages, origOptions);
+    //document.getElementById("left-button").onclick = replaceLeft;
+    //document.getElementById("right-button").onclick = replaceRight;
+  })();
+
+  (function () {
+    slider = new juxtapose.JXSlider(
+      chineseink, origImages_chineseink, origOptions_chineseink);
+    //document.getElementById("left-button").onclick = replaceLeft;
+    //document.getElementById("right-button").onclick = replaceRight;
+  })();
+
+  (function () {
+    slider = new juxtapose.JXSlider(
+      oilpainting, origImages_oilpainting, origOptions_oilpainting);
+    //document.getElementById("left-button").onclick = replaceLeft;
+    //document.getElementById("right-button").onclick = replaceRight;
+  })();
+
+  (function () {
+    slider = new juxtapose.JXSlider(
+      pixel, origImages_pixel, origOptions_pixel);
+    //document.getElementById("left-button").onclick = replaceLeft;
+    //document.getElementById("right-button").onclick = replaceRight;
+  })();
+
+  (function () {
+    slider = new juxtapose.JXSlider(
+      Origami, origImages_Origami, origOptions_Origami);
+    //document.getElementById("left-button").onclick = replaceLeft;
+    //document.getElementById("right-button").onclick = replaceRight;
+  })();
+
+  (function () {
+    slider = new juxtapose.JXSlider(
+      Embroidery, origImages_Embroidery, origOptions_Embroidery);
+    //document.getElementById("left-button").onclick = replaceLeft;
+    //document.getElementById("right-button").onclick = replaceRight;
+  })();
+
+  (function () {
+    slider = new juxtapose.JXSlider(
+      Ghibli, origImages_Ghibli, origOptions_Ghibli);
+    //document.getElementById("left-button").onclick = replaceLeft;
+    //document.getElementById("right-button").onclick = replaceRight;
+  })();
+
+  (function () {
+    slider = new juxtapose.JXSlider(
+      JOJO, origImages_JOJO, origOptions_JOJO);
+    //document.getElementById("left-button").onclick = replaceLeft;
+    //document.getElementById("right-button").onclick = replaceRight;
+  })();
+
+  (function () {
+    slider = new juxtapose.JXSlider(
+      Crayon, origImages_Crayon, origOptions_Crayon);
+    //document.getElementById("left-button").onclick = replaceLeft;
+    //document.getElementById("right-button").onclick = replaceRight;
+  })();
+
+  // Get the image text
+  var imgText = document.getElementById("imgtext");
+  // Use the same src in the expanded image as the image being clicked on from the grid
+  // expandImg.src = imgs.src;
+  // Use the value of the alt attribute of the clickable image as text inside the expanded image
+  imgText.innerHTML = name;
+  // Show the container element (hidden with CSS)
+  // expandImg.parentElement.style.display = "block";
+
+  $(".flip-card").click(function () {
+    console.log("fading in")
+    div_back = $(this).children().children()[1]
+    div_front = $(this).children().children()[0]
+    // console.log($(this).children("div.flip-card-back"))
+    console.log(div_back)
+    $(div_front).addClass("out");
+    $(div_front).removeClass("in");
+
+    $(div_back).addClass("in");
+    $(div_back).removeClass("out");
+
+  });
+
+  $(".flip-card").mouseleave(function () {
+    console.log("fading in")
+    div_back = $(this).children().children()[1]
+    div_front = $(this).children().children()[0]
+    // console.log($(this).children("div.flip-card-back"))
+    console.log(div_back)
+    $(div_front).addClass("in");
+    $(div_front).removeClass("out");
+
+    $(div_back).addClass("out");
+    $(div_back).removeClass("in");
+
+  });
+
+
+</script>
+
+
+</body>
+</html>
+
+
